@@ -15,6 +15,12 @@ sections {
     display: inline-flex;
     background-image: -moz-linear-gradient(to Right,#7ef29d ,#0f68a9);
 }
+section > .cards {
+    border-radius: 25px;
+}
+
+
+
 
 
 
