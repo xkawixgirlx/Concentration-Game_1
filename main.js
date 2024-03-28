@@ -21,14 +21,16 @@
 //*
 //?
 
-
+//! setInterval();
   /*----- event listeners -----*/
-.addEventListener(evt);
+// *.addEventListener(evt);
 
 
+
+render()
 
   /*----- functions -----*/
-init ();
+init ()
 
 /*Pseudocode:
 define win condition/Lose Condition - if else? maybe while if Zen Mode
@@ -44,3 +46,4 @@ All cards match === win
 Timer hits Zero === Loss
 Zen Mode: how many points can you get. winner = null;
  */
+init();
