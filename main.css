@@ -7,7 +7,16 @@ body {
     font-family: Arial;
     height: 100vh;
     display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
 }
+
+sections {
+    display: inline-flex;
+    background-image: -moz-linear-gradient(to Right,#7ef29d ,#0f68a9);
+}
+
+
 
 
 
