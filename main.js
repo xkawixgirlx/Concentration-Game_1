@@ -12,10 +12,16 @@
   Play Again/Play Button 
   Timer Countdown
   Modes/Levels*/
+let cards;
+let timer;
+let winner;
+let mode;
 
 
 
   /*----- cached elements  -----*/
+const playAgainBtn = document.querySelector('button');
+
 
 //!
 //*
@@ -24,13 +30,20 @@
 //! setInterval();
   /*----- event listeners -----*/
 // *.addEventListener(evt);
+playAgainBtn.addEventListener('click', init);
 
 
 
-render()
 
   /*----- functions -----*/
-init ()
+function init () {
+
+function render() {
+    renderCards();
+    renderTimer();
+    renderModes(); 
+    renderButton();
+  }
 
 /*Pseudocode:
 define win condition/Lose Condition - if else? maybe while if Zen Mode
@@ -46,4 +59,7 @@ All cards match === win
 Timer hits Zero === Loss
 Zen Mode: how many points can you get. winner = null;
  */
+
+}
+
 init();
