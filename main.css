@@ -20,7 +20,17 @@ section > .cards {
     display: inline-flex;
     border-radius: 25px;
     color: #FFFACD;
+    
 }
+
+button {
+    background-color: #FFEFD5;
+    color: #4B3621;
+}
+
+
+
+
 
 
 
