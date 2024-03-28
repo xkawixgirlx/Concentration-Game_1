@@ -58,6 +58,11 @@ deck2 = [ [null, null, null, null],
 render ();
 } 
 
+// if cards match from deck 1 and 2 for 16 iterations declare winner
+function getWinner(de1, de2) {
+    if (de1 === de2 );
+    return 
+}
 
  
 
