@@ -15,7 +15,8 @@ const FLIPPED_CARDS = {
   Play Again/Play Button 
   Timer Countdown
   Modes/Levels*/
-let decks;
+let deck1;
+let deck2;
 let timer;
 let winner;
 let mode;
@@ -54,6 +55,10 @@ deck2 = [ [null, null, null, null],
 ];
 
 
+render ();
+} 
+
+
  
 
 
@@ -79,6 +84,4 @@ Timer hits Zero === Loss
 Zen Mode: how many points can you get. winner = null;
  */
 
-}
 
-init();
