@@ -1,5 +1,7 @@
   /*----- constants -----*/
-
+const FLIPPED_CARDS = {
+    'null': 'yellow'  //show back of card not flipped
+}
 
 
 
@@ -12,7 +14,7 @@
   Play Again/Play Button 
   Timer Countdown
   Modes/Levels*/
-let cards;
+let decks;
 let timer;
 let winner;
 let mode;
@@ -38,8 +40,24 @@ playAgainBtn.addEventListener('click', init);
   /*----- functions -----*/
 function init () {
 
+deck1 = [ [null, null, null, null], //bottom row back of cards
+        [null, null, null, null], //lower-middle cards
+        [null, null, null, null], //middle-upper cards
+        [null, null, null, null], //top row of cards
+];
+
+deck2 = [ [null, null, null, null],
+    [null, null, null, null],
+    [null, null, null, null],
+    [null, null, null, null],
+];
+
+
+ 
+
+
 function render() {
-    renderCards();
+    renderDecks();
     renderTimer();
     renderModes(); 
     renderButton();
