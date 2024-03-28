@@ -72,6 +72,7 @@ function render() {
     renderTimer();
     renderModes(); 
     renderButton();
+    renderScore();
   }
 
 /*Pseudocode:
