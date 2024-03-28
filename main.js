@@ -1,6 +1,7 @@
   /*----- constants -----*/
 const FLIPPED_CARDS = {
-    'null': 'yellow'  //show back of card not flipped
+    'null': 'yellow',  //show back of card not flipped
+    '1' : 'green' //show card clicked
 }
 
 
