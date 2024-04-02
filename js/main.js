@@ -1,15 +1,16 @@
   /*----- constants -----*/
-  const SOURCE_TILES = [
-    { img: 'https://i.imgur.com/ZXPKaiN.jpg', matched: false },
-    { img: 'https://i.imgur.com/XMEsZBX.jpg', matched: false },
-    { img: 'https://i.imgur.com/6jX1bMT.jpg', matched: false },
-    { img: 'https://i.imgur.com/yKdqsBv.jpg', matched: false },
-    { img: 'https://i.imgur.com/1BV3HLr.jpg', matched: false },
-    { img: 'https://i.imgur.com/QYmN6Hp.jpg', matched: false },
-    { img: 'https://i.imgur.com/D5pWE05.jpg', matched: false },
-    { img: 'https://i.imgur.com/Ss4Xo3x.jpg', matched: false }
-  ];
-  const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
+const SOURCE_TILES = [
+  { img: 'https://i.imgur.com/ZXPKaiN.jpg', matched: false },
+  { img: 'https://i.imgur.com/XMEsZBX.jpg', matched: false },
+  { img: 'https://i.imgur.com/6jX1bMT.jpg', matched: false },
+  { img: 'https://i.imgur.com/yKdqsBv.jpg', matched: false },
+  { img: 'https://i.imgur.com/1BV3HLr.jpg', matched: false },
+  { img: 'https://i.imgur.com/QYmN6Hp.jpg', matched: false },
+  { img: 'https://i.imgur.com/D5pWE05.jpg', matched: false },
+  { img: 'https://i.imgur.com/Ss4Xo3x.jpg', matched: false }
+];
+const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
+
 
 
 
@@ -33,7 +34,7 @@ let score = 0;
 
   /*----- cached elements  -----*/
 const playAgainBtn = document.querySelector('button');
-const tileImgEls = document.querySelector('section.cards');
+const tileImgEls = document.querySelector('section > img');
 
 
 //!
@@ -98,7 +99,7 @@ function timerStart() {
 function incrementScore() {
   let currentTiles = 0;
   if (SOURCE_TILES === currentTiles);
-  return score + 10;   
+  return score + 5;   
 }
  
 
@@ -113,8 +114,13 @@ function renderTimer() {
 
 }
 
-function renderBoard() {
-
+function renderBoard(deckTile, section) {
+  section.innerHTML = '';
+  let tilesHTML = '';
+  deckTile.forEach(function(tiles) {
+  tilesHTML += `<section > img ${tiles.img}></section>`;
+  });
+  section.innerHTML = tilesHTML;
 }
 
 function renderButton() {
