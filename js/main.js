@@ -114,13 +114,13 @@ function renderTimer() {
 
 }
 
-function renderBoard(deckTile, section) {
-  section.innerHTML = '';
+function renderBoard(SOURCE_TILES, tileImgEls) {
+  tileImgEls.innerHTML = '';
   let tilesHTML = '';
-  deckTile.forEach(function(tiles) {
+  SOURCE_TILES.forEach(function(tiles) {
   tilesHTML += `<section > img ${tiles.img}></section>`;
   });
-  section.innerHTML = tilesHTML;
+  tileImgEls.innerHTML = tilesHTML;
 }
 
 function renderButton() {
