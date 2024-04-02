@@ -6,20 +6,24 @@ body {
     margin: 0;
     font-family: Arial;
     height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-}
-
-section#background {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-image: linear-gradient(toRight,#7ef29d ,#0f68a9);
 }
 
-section > .cards {
-    display: inline-flex;
-    border-radius: 25px;
+
+#cards {
+    display: grid;
     color: #FFFACD;
+    grid-template-columns: repeat(4, 15vmin);
+    gap: 1vmin;
+    
+    img {
+        width: 15vmin;
+        border-radius: 25px;
+    }
     
 }
 

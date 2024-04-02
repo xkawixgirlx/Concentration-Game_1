@@ -24,11 +24,12 @@ const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
   Timer Countdown
   Modes/Levels*/
 let board;
-let timer;
-let timeLeft = 120; //seconds 
+/*let timer;
+let timeLeft = 120; //seconds */
 let winner;
 /*let mode;*/ //IceBox feature
-let score = 0; 
+let score; 
+let initialCard;
 
 
 
@@ -55,6 +56,9 @@ init();
 
 function init() {
   board = getShuffledTiles();
+  score = 0;
+  winner = null;
+  initialCard = null;
   console.log(board);
   render(); 
 }
@@ -105,7 +109,7 @@ function incrementScore() {
 
 
 function render() {
-  renderBoard(SOURCE_TILES, tileImgEls); 
+  renderBoard(); 
   renderButton();
   renderScore();
 }
@@ -114,12 +118,10 @@ function renderTimer() {
 
 }
 function renderBoard() {
-  board.innerHTML = '';
-  let tilesHTML = '';
-  getShuffledTiles().forEach(function(tile) {
-    tilesHTML += `<section><img src="${tile.img}"></section>`;
+  board.forEach(function(tile, tileIdx) {
+    const tileEl = document.getElementById(tileIdx);
+    tileEl.src = tile.matched || tile === initialCard ? tile.img : TILE_BACK;
   });
-  board.innerHTML = tilesHTML;
 }
 
 function renderButton() {
