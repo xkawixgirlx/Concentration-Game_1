@@ -46,7 +46,7 @@ const tileImgEls = document.querySelector('section > img');
   /*----- event listeners -----*/
 // *.addEventListener(evt);
 playAgainBtn.addEventListener('click', init);
-
+document.getElementById('cards').addEventListener('click', handleCardClick);
 
 
 
@@ -76,6 +76,17 @@ function getShuffledTiles() {
     tiles.push(rndTile);
   }
   return tiles;
+}
+
+function handleCardClick(evt) {
+  const tileIdx = parseInt(evt.target.id);
+  if (isNaN(tileIdx)) return; 
+  console.log(tileIdx)
+  if (!initialCard) {
+    initialCard = board[tileIdx];
+  }
+
+  render();
 }
 
 function gameOver() {
