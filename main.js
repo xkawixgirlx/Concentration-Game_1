@@ -71,8 +71,7 @@ function getShuffledTiles() {
   return tiles;
 }
 
-render (); {
-} 
+render (); 
 
 
  
