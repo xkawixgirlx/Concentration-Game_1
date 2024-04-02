@@ -13,7 +13,7 @@ body {
 
 section#background {
     display: inline-flex;
-    background-image: -moz-linear-gradient(toRight,#7ef29d ,#0f68a9);
+    background-image: linear-gradient(toRight,#7ef29d ,#0f68a9);
 }
 
 section > .cards {

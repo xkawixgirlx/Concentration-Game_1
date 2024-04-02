@@ -52,10 +52,10 @@ playAgainBtn.addEventListener('click', init);
 init();
 
 
-function init () {
+function init() {
   board = getShuffledTiles();
   console.log(board);
-  render (); 
+  render(); 
 }
 
 function getShuffledTiles() {
@@ -67,23 +67,23 @@ function getShuffledTiles() {
 
   while (tempTiles.length) {
     const rndIdx = Math.floor(Math.random() * tempTiles.length);
-      const rndTile = tempTiles.splice(rndIdx, 1)[0];
+    const rndTile = tempTiles.splice(rndIdx, 1)[0];
     tiles.push(rndTile);
   }
   return tiles;
 }
 
-function gameOver () {
+function gameOver() {
   cancelInterval(timer);
   $('button').show(); 
 }
 
 function updateTimeLeft() {
   timeLeft = timeLeft - 1;
-  if (timeLeft >= 0)
-  $('#timer').html(timeLeft);
-else {
-gameOver();
+  if (timeLeft >= 0) {
+    $('#timer').html(timeLeft);
+  } else {
+    gameOver();
   }
 }
 
@@ -91,20 +91,38 @@ function timerStart() {
   timer = setInterval(updateTimer, 1000); // 1000 milliseconds is 1 sec.
   updateTimer(); 
   $('button').hide();
-  render();
+  renderTimer();
 }
 
+
+function incrementScore() {
+  let currentTiles = 0;
+  if (SOURCE_TILES === currentTiles);
+  return score + 10;   
+}
  
 
 
 function render() {
-    renderTimer();
-    renderModes(); 
-    renderButton();
-    renderScore();
-  };
+  renderBoard(); 
+  renderButton();
+  renderScore();
+}
 
- 
+function renderTimer() {
+
+}
+
+function renderBoard() {
+
+}
+
+function renderButton() {
+
+}
+function renderScore() {
+
+}
 
 
 /*Pseudocode:
