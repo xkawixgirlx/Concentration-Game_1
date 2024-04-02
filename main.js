@@ -1,8 +1,15 @@
   /*----- constants -----*/
-const FLIPPED_CARDS = {
-    'null': 'yellow',  //show back of card not flipped
-    '1' : 'green' //show card clicked
-}
+  const SOURCE_TILES = [
+    { img: 'https://i.imgur.com/ZXPKaiN.jpg', matched: false },
+    { img: 'https://i.imgur.com/XMEsZBX.jpg', matched: false },
+    { img: 'https://i.imgur.com/6jX1bMT.jpg', matched: false },
+    { img: 'https://i.imgur.com/yKdqsBv.jpg', matched: false },
+    { img: 'https://i.imgur.com/1BV3HLr.jpg', matched: false },
+    { img: 'https://i.imgur.com/QYmN6Hp.jpg', matched: false },
+    { img: 'https://i.imgur.com/D5pWE05.jpg', matched: false },
+    { img: 'https://i.imgur.com/Ss4Xo3x.jpg', matched: false }
+  ];
+  const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
 
 
 
@@ -15,16 +22,17 @@ const FLIPPED_CARDS = {
   Play Again/Play Button 
   Timer Countdown
   Modes/Levels*/
-let deck1;
-let deck2;
+let board;
 let timer;
 let winner;
 let mode;
+let score; 
 
 
 
   /*----- cached elements  -----*/
 const playAgainBtn = document.querySelector('button');
+const tileImgEls = document.querySelector('section.cards');
 
 
 //!
@@ -40,40 +48,42 @@ playAgainBtn.addEventListener('click', init);
 
 
   /*----- functions -----*/
+init();
+
 function init () {
+board = getShuffledTiles();
+console.log(board);
 
-deck1 = [ [null, null, null, null], //bottom row back of cards
-        [null, null, null, null], //lower-middle cards
-        [null, null, null, null], //middle-upper cards
-        [null, null, null, null], //top row of cards
-];
-
-deck2 = [ [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
-];
-
-
-render ();
+render (); {
 } 
-
-// if cards match from deck 1 and 2 for 16 iterations declare winner
-function getWinner(de1, de2) {
-    if (de1 === de2 );
-    return 
 }
 
- 
+function getShuffledTiles() {
+  const tempTiles = [];
+  const tiles = [];
+  SOURCE_TILES.forEach(function(tile) {
+       tempTiles.push({...tile}, {...tile});
+  });
+
+  while (tempTiles.length) {
+    const rndIdx = Math.floor(Math.random() * tempTiles.length);
+      const rndTile = tempTiles.splice(rndIdx, 1)[0];
+    tiles.push(rndTile);
+  }
+  return tiles;
+}
 
 
 function render() {
-    renderDecks();
+    renderBoard();
     renderTimer();
     renderModes(); 
     renderButton();
     renderScore();
   }
+
+ 
+
 
 /*Pseudocode:
 define win condition/Lose Condition - if else? maybe while if Zen Mode
