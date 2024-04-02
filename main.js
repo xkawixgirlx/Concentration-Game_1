@@ -24,9 +24,10 @@
   Modes/Levels*/
 let board;
 let timer;
+let timerLeft = 120; //seconds 
 let winner;
 let mode;
-let score; 
+let score = 0; 
 
 
 
@@ -52,9 +53,10 @@ init();
 
 
 function init () {
-board = getShuffledTiles();
-console.log(board);
+  board = getShuffledTiles();
+  console.log(board);
 }
+render (); 
 
 function getShuffledTiles() {
   const tempTiles = [];
@@ -71,14 +73,30 @@ function getShuffledTiles() {
   return tiles;
 }
 
-render (); 
+function gameOver () {
+  cancelInterval(timer);
+  $('button').show(); 
+}
 
+function timerLeft() {
+  timerLeft = timerLeft - 1;
+  if (timerLeft >= 0)
+  $('#timer').html(timerLeft);
+else {
+gameOver();
+  }
+}
+
+function timerStart() {
+  timer = setInterval(updateTimer, 1000); // 1000 milliseconds is 1 sec.
+  updateTimer(); 
+  $('button').hide();
+}
 
  
 
 
 function render() {
-    renderBoard();
     renderTimer();
     renderModes(); 
     renderButton();
