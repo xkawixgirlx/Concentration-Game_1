@@ -105,7 +105,7 @@ function incrementScore() {
 
 
 function render() {
-  renderBoard(); 
+  renderBoard(SOURCE_TILES, tileImgEls); 
   renderButton();
   renderScore();
 }
@@ -113,14 +113,13 @@ function render() {
 function renderTimer() {
 
 }
-
-function renderBoard(SOURCE_TILES, tileImgEls) {
-  tileImgEls.innerHTML = '';
+function renderBoard() {
+  board.innerHTML = '';
   let tilesHTML = '';
-  SOURCE_TILES.forEach(function(tiles) {
-  tilesHTML += `<section > img ${tiles.img}></section>`;
+  getShuffledTiles().forEach(function(tile) {
+    tilesHTML += `<section><img src="${tile.img}"></section>`;
   });
-  tileImgEls.innerHTML = tilesHTML;
+  board.innerHTML = tilesHTML;
 }
 
 function renderButton() {
