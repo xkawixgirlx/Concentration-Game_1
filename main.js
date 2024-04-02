@@ -24,9 +24,9 @@
   Modes/Levels*/
 let board;
 let timer;
-let timerLeft = 120; //seconds 
+let timeLeft = 120; //seconds 
 let winner;
-let mode;
+/*let mode;*/ //IceBox feature
 let score = 0; 
 
 
@@ -55,8 +55,8 @@ init();
 function init () {
   board = getShuffledTiles();
   console.log(board);
+  render (); 
 }
-render (); 
 
 function getShuffledTiles() {
   const tempTiles = [];
@@ -78,10 +78,10 @@ function gameOver () {
   $('button').show(); 
 }
 
-function timerLeft() {
-  timerLeft = timerLeft - 1;
-  if (timerLeft >= 0)
-  $('#timer').html(timerLeft);
+function updateTimeLeft() {
+  timeLeft = timeLeft - 1;
+  if (timeLeft >= 0)
+  $('#timer').html(timeLeft);
 else {
 gameOver();
   }
@@ -91,6 +91,7 @@ function timerStart() {
   timer = setInterval(updateTimer, 1000); // 1000 milliseconds is 1 sec.
   updateTimer(); 
   $('button').hide();
+  render();
 }
 
  
