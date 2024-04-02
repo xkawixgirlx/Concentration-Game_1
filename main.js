@@ -50,12 +50,10 @@ playAgainBtn.addEventListener('click', init);
   /*----- functions -----*/
 init();
 
+
 function init () {
 board = getShuffledTiles();
 console.log(board);
-
-render (); {
-} 
 }
 
 function getShuffledTiles() {
@@ -73,6 +71,12 @@ function getShuffledTiles() {
   return tiles;
 }
 
+render (); {
+} 
+
+
+ 
+
 
 function render() {
     renderBoard();
@@ -80,7 +84,7 @@ function render() {
     renderModes(); 
     renderButton();
     renderScore();
-  }
+  };
 
  
 
