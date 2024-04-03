@@ -84,11 +84,9 @@ function handleCardClick(evt) {
   const tileIdx = parseInt(evt.target.id);
   const clickedCard = board[tileIdx];
   let ignoreClick = false;
-  // let initialCard;
   if (ignoreClick || isNaN(tileIdx) || !clickedCard) return; 
   console.log(tileIdx)
   if (!initialCard) {
-    // initialCard = board[tileIdx];
     initialCard = clickedCard;
   } else if (initialCard === clickedCard) {
     badGuessCount ++;
@@ -107,7 +105,6 @@ function handleCardClick(evt) {
     clickedCard.matched = true; 
     setTimeout(function() {
       ignoreClick = false;
-      // initialCard.matched = false;
       clickedCard.matched = false; 
       initialCard = null;
       render();
