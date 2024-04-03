@@ -20,6 +20,15 @@ h1,h2 {
     min-height: 5vmin;
 }
 
+#win-lose {
+    color: whitesmoke;
+    text-shadow: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+    min-height: 5vmin;
+    text-size-adjust: 25px;
+}
+
 #bad-guess, #score {
     color: whitesmoke;
     margin: 3vmin;

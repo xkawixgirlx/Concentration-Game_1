@@ -23,7 +23,7 @@ const MAX_BAD_GUESSES = 40;
   Audio Icebox feature
   Play Again/Play Button 
   Timer Countdown
-  Modes/Levels*/
+  Modes/Levels Icebox feature */ 
   /*let timer; Icebox feature
   let timeLeft = 120; //seconds */
   /*let mode;*/ //IceBox feature
@@ -66,6 +66,7 @@ function init() {
   initialCard = null;
   badGuessCount = 35;
   // console.log(board);
+  renderMessage();
   render(); 
 }
 
@@ -102,11 +103,11 @@ function handleCardClick(evt) {
       initialCard.matched = true; 
       initialCard = null;
       incrementScore(); 
+      getWinner();
+    } else {
+      ignoreClick = true;
+      decrementBadGuesses();
       checkgameOver();
-    getWinner();
-  } else {
-    ignoreClick = true;
-    decrementBadGuesses();
     clickedCard.matched = true; 
     setTimeout(function() {
       ignoreClick = false;
@@ -155,8 +156,8 @@ function getWinner() {
 
 function render() {
   renderBoard(); 
-  renderScore();
   renderMessage();
+  renderScore();
 }
 
 function renderTimer() {
