@@ -81,7 +81,7 @@ h3 {
 #sidebar-nav {
     height: 100vh;
     width: 30vmin;
-    max-width: 30vmin;
+    max-width: 350px;
     position: fixed;
     z-index: 1;
     top: 0;
