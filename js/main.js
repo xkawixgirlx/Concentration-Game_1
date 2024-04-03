@@ -29,6 +29,7 @@ const MAX_BAD_GUESSES = 40;
   /*let mode;*/ //IceBox feature
 let board;
 let winner;
+let gameOver;
 let score; 
 let initialCard;
 let badGuessCount;
@@ -62,7 +63,7 @@ function init() {
   score = 0;
   winner = null;
   initialCard = null;
-  badGuessCount = 40;
+  badGuessCount = 35;
   // console.log(board);
   render(); 
 }
@@ -86,7 +87,7 @@ function handleCardClick(evt) {
   const tileIdx = parseInt(evt.target.id);
   const clickedCard = board[tileIdx];
   let ignoreClick = false;
-  if (ignoreClick || isNaN(tileIdx) || !clickedCard) return; 
+  if (ignoreClick || isNaN(tileIdx) || !clickedCard || gameOver || winner) return; 
   console.log(tileIdx)
   if (!initialCard) {
     initialCard = clickedCard;
@@ -99,8 +100,8 @@ function handleCardClick(evt) {
     clickedCard.matched = true;
     initialCard.matched = true; 
     initialCard = null;
-    winner = board.every(tile => tile.matched);
     incrementScore(); 
+    getWinner();
   } else {
     ignoreClick = true;
     decrementBadGuesses();
@@ -145,8 +146,10 @@ function incrementScore() {
 
 
 function getWinner() {
-  winner = board.every(tile => tile.matched); 
-  console.log('Congratulations! You Win!');
+  if (!winner && board.every(tile => tile.matched)) {
+    winner = true; 
+    console.log('Congratulations! You Win!');
+  } 
 }
 
 function render() {
