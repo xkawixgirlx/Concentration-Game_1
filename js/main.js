@@ -97,8 +97,6 @@ function handleCardClick(evt) {
     clickedCard.matched = true;
     initialCard.matched = true; 
     initialCard = null;
-    winner = board.every(tile => tile.matched);
-    console.log('Congratulations! You Win!');
   } else {
     ignoreClick = true;
     badGuessCount ++;
@@ -111,7 +109,7 @@ function handleCardClick(evt) {
     }, DISPLAY_TILES_TIME);
   }
 } 
-  render();
+render();
 }
 
 
@@ -139,12 +137,16 @@ function timerStart() {
 
 
 function incrementScore() {
-  let currentTiles = 0;
-  if (SOURCE_TILES === currentTiles);
+  if (initialCard.img === clickCard.img);
+  clickedCard.matched = true;
+  initialCard.matched = true; 
   return score + 5;   
 }
- 
 
+function getWinner() {
+  winner = board.every(tile => tile.matched); 
+  console.log('Congratulations! You Win!');
+}
 
 function render() {
   renderBoard(); 
