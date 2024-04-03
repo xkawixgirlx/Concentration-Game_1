@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(toRight,#7ef29d ,#0f68a9);
+    background-image: linear-gradient(to Right,#7ef29d ,#0f68a9);
 }
 
 

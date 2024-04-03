@@ -61,7 +61,7 @@ function init() {
   winner = null;
   initialCard = null;
   badGuessCount = 0;
-  console.log(board);
+  // console.log(board);
   render(); 
 }
 
@@ -84,30 +84,35 @@ function handleCardClick(evt) {
   const tileIdx = parseInt(evt.target.id);
   const clickedCard = board[tileIdx];
   let ignoreClick = false;
-  if (ignoreClick || isNaN(tileIdx) || clickedCard) return; 
+  let initialCard;
+  if (ignoreClick || isNaN(tileIdx) || !clickedCard) return; 
   console.log(tileIdx)
   if (!initialCard) {
     // initialCard = board[tileIdx];
+    initialCard = clickedCard;
   } else if (initialCard === clickedCard) {
     badGuessCount ++;
     initialCard = null; 
   } else if (initialCard) {
-    if (clickedCard.img === board.img);
-    console.log('You found a Match!')
-    tile.matched = true; 
+    if (clickedCard.img === initialCard.img) {
+    console.log('You found a Match!');
+    clickedCard.matched = true;
+    initialCard.matched = true; 
     initialCard = null;
     winner = board.every(tile => tile.matched);
   } else {
     ignoreClick = true;
     badGuessCount ++;
-    clickedCard.matched = true; // < - This is where I am a little lost for how to change or incorporate this logic. 
+    clickedCard.matched = true; 
     setTimeout(function() {
       ignoreClick = false;
-      initialCard = null;
+      initialCard.matched = false;
       clickedCard.matched = false; 
+      initialCard = null;
       render();
     }, DISPLAY_TILES_TIME);
-  } 
+  }
+} 
   render();
 }
 
