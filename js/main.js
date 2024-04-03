@@ -14,6 +14,7 @@ const DISPLAY_TILES_TIME = 1500; //in milliseconds = 1 sec.
 const MAX_BAD_GUESSES = 40;
 
 
+
   /*----- state variables -----*/
   /*States:
   Flipped/not flipped matched: 
@@ -109,17 +110,17 @@ function handleCardClick(evt) {
       clickedCard.matched = false; 
       initialCard = null;
       render();
+      checkgameOver();
     }, DISPLAY_TILES_TIME);
   }
 } 
 render();
 }
 
-
-function gameOver() {
-  cancelInterval(timer);
-  $('button').show();
-  badGuessCount = 0; 
+function checkgameOver() {
+  if (badGuessCount >= MAX_BAD_GUESSES) {
+  console.log('Game Over! You lose!')
+  }
 }
 
 function decrementBadGuesses() {
@@ -137,7 +138,6 @@ function updateScore() {
   scoreEl.textContent = score;
 }
 
-
 function incrementScore() {
   score += 5;
   updateScore();  
@@ -151,7 +151,6 @@ function getWinner() {
 
 function render() {
   renderBoard(); 
-  renderButton();
   renderScore();
   renderMessage();
 }
@@ -159,6 +158,7 @@ function render() {
 function renderTimer() {
 
 }
+
 function renderBoard() {
   board.forEach(function(tile, tileIdx) {
     const tileEl = document.getElementById(tileIdx);
@@ -169,6 +169,7 @@ function renderBoard() {
 function renderMessage() {
 
 }
+
 function renderScore() {
   const scoreEl = document.getElementById('scoreMatch');
   scoreEl.textContent = score;
