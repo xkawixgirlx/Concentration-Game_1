@@ -40,7 +40,7 @@ let message;
   /*----- cached elements  -----*/
 const playAgainBtn = document.querySelector('button');
 const tileImgEls = document.querySelector('section > img');
-
+const msgEl = document.getElementById('win-lose');
 
 //!
 //*
@@ -96,11 +96,12 @@ function handleCardClick(evt) {
     initialCard = null; 
   } else if (initialCard) {
     if (clickedCard.img === initialCard.img) {
-    console.log('You found a Match!');
-    clickedCard.matched = true;
-    initialCard.matched = true; 
-    initialCard = null;
-    incrementScore(); 
+      console.log('You found a Match!');
+      clickedCard.matched = true;
+      initialCard.matched = true; 
+      initialCard = null;
+      incrementScore(); 
+      checkgameOver();
     getWinner();
   } else {
     ignoreClick = true;
@@ -111,7 +112,6 @@ function handleCardClick(evt) {
       clickedCard.matched = false; 
       initialCard = null;
       render();
-      checkgameOver();
     }, DISPLAY_TILES_TIME);
   }
 } 
@@ -119,7 +119,7 @@ render();
 }
 
 function checkgameOver() {
-  if (badGuessCount >= MAX_BAD_GUESSES) {
+  if (badGuessCount === MAX_BAD_GUESSES) {
   console.log('Game Over! You lose!')
   }
 }
@@ -143,7 +143,6 @@ function incrementScore() {
   score += 5;
   updateScore();  
 }
-
 
 function getWinner() {
   if (!winner && board.every(tile => tile.matched)) {
@@ -170,7 +169,11 @@ function renderBoard() {
 }
 
 function renderMessage() {
-
+  if (winner) {
+    msgEl.textContent = 'Congratulations! You Win!'
+  } else if (gameOver) {
+    msgEl.textContent = 'No more guesses! You Lose!'
+  }
 }
 
 function renderScore() {
