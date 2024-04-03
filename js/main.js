@@ -9,9 +9,10 @@ const SOURCE_TILES = [
   { img: 'https://i.imgur.com/D5pWE05.jpg', matched: false },
   { img: 'https://i.imgur.com/Ss4Xo3x.jpg', matched: false }
 ];
+
 const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
 const DISPLAY_TILES_TIME = 1500; //in milliseconds = 1 sec.
-const MAX_BAD_GUESSES = 5;
+const MAX_BAD_GUESSES = 30;
 
 
 
@@ -58,7 +59,6 @@ document.getElementById('cards').addEventListener('click', handleCardClick);
 
 /*----- functions -----*/
 init();
-
 
 function init() {
   board = getShuffledTiles();
@@ -125,8 +125,6 @@ function checkgameOver() {
   gameOver = badGuessCount === 0;
 }
 
-
-
 function getWinner() {
   winner = board.every(tile => tile.matched);
 }
@@ -136,10 +134,6 @@ function render() {
   renderMessage();
   renderScore();
   playAgainBtn.style.visibility = winner || gameOver ? 'visible' : 'hidden';
-}
-
-function renderTimer() {
-  
 }
 
 function renderBoard() {
