@@ -10,24 +10,24 @@ const SOURCE_TILES = [
   { img: 'https://i.imgur.com/Ss4Xo3x.jpg', matched: false }
 ];
 const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
-const DISPLAY_TILES_TIME = 2000; //in milliseconds = 1 sec.
+const DISPLAY_TILES_TIME = 1500; //in milliseconds = 1 sec.
 
 
 
   /*----- state variables -----*/
   /*States:
-  Flipped/not flipped
-  1st card? 
+  Flipped/not flipped matched: 
+  1st card? initialCard
   Board render
-  Audio
+  Audio Icebox feature
   Play Again/Play Button 
   Timer Countdown
   Modes/Levels*/
+  /*let timer; Icebox feature
+  let timeLeft = 120; //seconds */
+  /*let mode;*/ //IceBox feature
 let board;
-/*let timer;
-let timeLeft = 120; //seconds */
 let winner;
-/*let mode;*/ //IceBox feature
 let score; 
 let initialCard;
 let badGuessCount;
@@ -97,6 +97,8 @@ function handleCardClick(evt) {
     clickedCard.matched = true;
     initialCard.matched = true; 
     initialCard = null;
+    winner = board.every(tile => tile.matched);
+    incrementScore(); 
   } else {
     ignoreClick = true;
     badGuessCount ++;
@@ -119,32 +121,21 @@ function gameOver() {
   badGuessCount = 0; 
 }
 
-function updateTimeLeft() {
-  timeLeft = timeLeft - 1;
-  if (timeLeft >= 0) {
-    $('#timer').html(timeLeft);
-  } else {
-    gameOver();
-  }
-}
 
-function timerStart() {
-  timer = setInterval(updateTimer, 1000); // 1000 milliseconds is 1 sec.
-  updateTimer(); 
-  $('button').hide();
-  renderTimer();
+function updateScore() {
+  const scoreEl = document.getElementById('scoreMatch');
+  scoreEl.textContent = score;
 }
 
 
 function incrementScore() {
-  if (initialCard.img === clickCard.img);
-  clickedCard.matched = true;
-  initialCard.matched = true; 
-  return score + 5;   
+  score += 5;
+  updateScore();  
 }
 
+
 function getWinner() {
-  winner = board.every(tile => tile.matched); 
+  let winner = board.every(tile => tile.matched); 
   console.log('Congratulations! You Win!');
 }
 
@@ -168,7 +159,8 @@ function renderButton() {
 
 }
 function renderScore() {
-
+  const scoreEl = document.getElementById('scoreMatch');
+  scoreEl.textContent = score;
 }
 
 

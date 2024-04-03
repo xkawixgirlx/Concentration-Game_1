@@ -13,6 +13,19 @@ body {
     background-image: linear-gradient(to Right,#7ef29d ,#0f68a9);
 }
 
+h1,h2 {
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+    min-height: 5vmin;
+}
+
+#bad-guess, #score {
+    color: whitesmoke;
+    margin: 3vmin;
+    font-style: oblique;
+    text-shadow: whitesmoke;
+}
 
 #cards {
     display: grid;
@@ -31,6 +44,7 @@ button {
     background-color: #FFEFD5;
     color: #4B3621;
     padding: 1vmin;
+    margin-bottom: 3vmin;
 }
 
 
