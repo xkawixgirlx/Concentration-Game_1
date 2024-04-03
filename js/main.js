@@ -82,10 +82,12 @@ function getShuffledTiles() {
 
 function handleCardClick(evt) {
   const tileIdx = parseInt(evt.target.id);
+  const clickedCard = board[tileIdx];
+  let ignoreClick = false;
   if (ignoreClick || isNaN(tileIdx) || clickedCard) return; 
   console.log(tileIdx)
   if (!initialCard) {
-    initialCard = board[tileIdx];
+    // initialCard = board[tileIdx];
   } else if (initialCard === clickedCard) {
     badGuessCount ++;
     initialCard = null; 
@@ -99,17 +101,16 @@ function handleCardClick(evt) {
     ignoreClick = true;
     badGuessCount ++;
     clickedCard.matched = true; // < - This is where I am a little lost for how to change or incorporate this logic. 
-    setTimeout(function()) {
+    setTimeout(function() {
       ignoreClick = false;
       initialCard = null;
       clickedCard.matched = false; 
-
-    }
-  }
-  }
-
+      render();
+    }, DISPLAY_TILES_TIME);
+  } 
   render();
 }
+
 
 function gameOver() {
   cancelInterval(timer);
