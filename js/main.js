@@ -84,7 +84,7 @@ function handleCardClick(evt) {
   const tileIdx = parseInt(evt.target.id);
   const clickedCard = board[tileIdx];
   let ignoreClick = false;
-  let initialCard;
+  // let initialCard;
   if (ignoreClick || isNaN(tileIdx) || !clickedCard) return; 
   console.log(tileIdx)
   if (!initialCard) {
@@ -100,13 +100,14 @@ function handleCardClick(evt) {
     initialCard.matched = true; 
     initialCard = null;
     winner = board.every(tile => tile.matched);
+    console.log('Congratulations! You Win!');
   } else {
     ignoreClick = true;
     badGuessCount ++;
     clickedCard.matched = true; 
     setTimeout(function() {
       ignoreClick = false;
-      initialCard.matched = false;
+      // initialCard.matched = false;
       clickedCard.matched = false; 
       initialCard = null;
       render();
