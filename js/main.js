@@ -11,7 +11,7 @@ const SOURCE_TILES = [
 ];
 const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
 const DISPLAY_TILES_TIME = 1500; //in milliseconds = 1 sec.
-
+const MAX_BAD_GUESSES = 40;
 
 
   /*----- state variables -----*/
@@ -31,6 +31,7 @@ let winner;
 let score; 
 let initialCard;
 let badGuessCount;
+let message;
 
 
 
@@ -60,7 +61,7 @@ function init() {
   score = 0;
   winner = null;
   initialCard = null;
-  badGuessCount = 0;
+  badGuessCount = 40;
   // console.log(board);
   render(); 
 }
@@ -89,7 +90,7 @@ function handleCardClick(evt) {
   if (!initialCard) {
     initialCard = clickedCard;
   } else if (initialCard === clickedCard) {
-    badGuessCount ++;
+    decrementBadGuesses();
     initialCard = null; 
   } else if (initialCard) {
     if (clickedCard.img === initialCard.img) {
@@ -101,7 +102,7 @@ function handleCardClick(evt) {
     incrementScore(); 
   } else {
     ignoreClick = true;
-    badGuessCount ++;
+    decrementBadGuesses();
     clickedCard.matched = true; 
     setTimeout(function() {
       ignoreClick = false;
@@ -121,6 +122,15 @@ function gameOver() {
   badGuessCount = 0; 
 }
 
+function decrementBadGuesses() {
+  badGuessCount--;
+  updateBadGuesses();
+}
+
+function updateBadGuesses() {
+  const badGuessesEl = document.getElementById('badguessCount');
+  badGuessesEl.textContent = badGuessCount;
+}
 
 function updateScore() {
   const scoreEl = document.getElementById('scoreMatch');
@@ -135,7 +145,7 @@ function incrementScore() {
 
 
 function getWinner() {
-  let winner = board.every(tile => tile.matched); 
+  winner = board.every(tile => tile.matched); 
   console.log('Congratulations! You Win!');
 }
 
@@ -143,6 +153,7 @@ function render() {
   renderBoard(); 
   renderButton();
   renderScore();
+  renderMessage();
 }
 
 function renderTimer() {
@@ -155,7 +166,7 @@ function renderBoard() {
   });
 }
 
-function renderButton() {
+function renderMessage() {
 
 }
 function renderScore() {
