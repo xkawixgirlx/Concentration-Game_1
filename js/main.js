@@ -11,62 +11,63 @@ const SOURCE_TILES = [
 ];
 const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
 const DISPLAY_TILES_TIME = 1500; //in milliseconds = 1 sec.
-const MAX_BAD_GUESSES = 40;
+const MAX_BAD_GUESSES = 5;
 
 
 
-  /*----- state variables -----*/
-  /*States:
-  Flipped/not flipped matched: 
-  1st card? initialCard
-  Board render
-  Audio Icebox feature
-  Play Again/Play Button 
-  Timer Countdown
-  Modes/Levels Icebox feature */ 
-  /*let timer; Icebox feature
-  let timeLeft = 120; //seconds */
-  /*let mode;*/ //IceBox feature
+/*----- state variables -----*/
+/*States:
+Flipped/not flipped matched: 
+1st card? initialCard
+Board render
+Audio Icebox feature
+Play Again/Play Button 
+Timer Countdown
+Modes/Levels Icebox feature */ 
+/*let timer; Icebox feature
+let timeLeft = 120; //seconds */
+/*let mode;*/ //IceBox feature
 let board;
 let winner;
 let gameOver;
 let score; 
 let initialCard;
 let badGuessCount;
-let message;
+let ignoreClick;
 
 
 
-  /*----- cached elements  -----*/
+/*----- cached elements  -----*/
 const playAgainBtn = document.querySelector('button');
 const tileImgEls = document.querySelector('section > img');
 const msgEl = document.getElementById('win-lose');
+const badGuessesEl = document.getElementById('badguessCount');
+const scoreEl = document.getElementById('scoreMatch');
 
 //!
 //*
 //?
 
 //! setInterval();
-  /*----- event listeners -----*/
+/*----- event listeners -----*/
 // *.addEventListener(evt);
 playAgainBtn.addEventListener('click', init);
 document.getElementById('cards').addEventListener('click', handleCardClick);
 
 
 
-  /*----- functions -----*/
+/*----- functions -----*/
 init();
 
 
 function init() {
   board = getShuffledTiles();
   score = 0;
-  winner = null;
+  winner = false;
   gameOver = false;
   initialCard = null;
-  badGuessCount = 35;
-  // console.log(board);
-  renderMessage();
+  badGuessCount = MAX_BAD_GUESSES;
+  ignoreClick = false;
   render(); 
 }
 
@@ -88,13 +89,13 @@ function getShuffledTiles() {
 function handleCardClick(evt) {
   const tileIdx = parseInt(evt.target.id);
   const clickedCard = board[tileIdx];
-  let ignoreClick = false;
   if (ignoreClick || isNaN(tileIdx) || !clickedCard || gameOver || winner) return; 
   console.log(tileIdx)
   if (!initialCard) {
     initialCard = clickedCard;
   } else if (initialCard === clickedCard) {
-    decrementBadGuesses();
+    badGuessCount--;
+    checkgameOver();
     initialCard = null; 
   } else if (initialCard) {
     if (clickedCard.img === initialCard.img) {
@@ -102,66 +103,43 @@ function handleCardClick(evt) {
       clickedCard.matched = true;
       initialCard.matched = true; 
       initialCard = null;
-      incrementScore(); 
+      score += 5; 
       getWinner();
     } else {
       ignoreClick = true;
-      decrementBadGuesses();
+      badGuessCount--;
       checkgameOver();
-    clickedCard.matched = true; 
-    setTimeout(function() {
-      ignoreClick = false;
-      clickedCard.matched = false; 
-      initialCard = null;
-      render();
-    }, DISPLAY_TILES_TIME);
-  }
-} 
-render();
+      clickedCard.matched = true; 
+      setTimeout(function() {
+        ignoreClick = false;
+        clickedCard.matched = false; 
+        initialCard = null;
+        render();
+      }, DISPLAY_TILES_TIME);
+    }
+  } 
+  render();
 }
 
 function checkgameOver() {
-  if (badGuessCount === MAX_BAD_GUESSES) {
-    gameOver = true;
-    console.log('Game Over! You lose!')
-  }
+  gameOver = badGuessCount === 0;
 }
 
-function decrementBadGuesses() {
-  badGuessCount--;
-  updateBadGuesses();
-}
 
-function updateBadGuesses() {
-  const badGuessesEl = document.getElementById('badguessCount');
-  badGuessesEl.textContent = badGuessCount;
-}
-
-function updateScore() {
-  const scoreEl = document.getElementById('scoreMatch');
-  scoreEl.textContent = score;
-}
-
-function incrementScore() {
-  score += 5;
-  updateScore();  
-}
 
 function getWinner() {
-  if (!winner && board.every(tile => tile.matched)) {
-    winner = true; 
-    console.log('Congratulations! You Win!');
-  } 
+  winner = board.every(tile => tile.matched);
 }
 
 function render() {
   renderBoard(); 
   renderMessage();
   renderScore();
+  playAgainBtn.style.visibility = winner || gameOver ? 'visible' : 'hidden';
 }
 
 function renderTimer() {
-
+  
 }
 
 function renderBoard() {
@@ -176,12 +154,15 @@ function renderMessage() {
     msgEl.textContent = 'Congratulations! You Win!'
   } else if (gameOver) {
     msgEl.textContent = 'No more guesses! You Lose!'
+  } else {
+    msgEl.textContent = 'Good Luck!'
   }
 }
 
 function renderScore() {
   const scoreEl = document.getElementById('scoreMatch');
   scoreEl.textContent = score;
+  badGuessesEl.textContent = badGuessCount;
 }
 
 
