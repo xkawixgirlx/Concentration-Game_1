@@ -10,7 +10,7 @@ const SOURCE_TILES = [
   { img: 'https://i.imgur.com/Ss4Xo3x.jpg', matched: false }
 ];
 const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
-
+const DISPLAY_TILES_TIME = 2000; //in milliseconds = 1 sec.
 
 
 
@@ -30,6 +30,7 @@ let winner;
 /*let mode;*/ //IceBox feature
 let score; 
 let initialCard;
+let badGuessCount;
 
 
 
@@ -59,6 +60,7 @@ function init() {
   score = 0;
   winner = null;
   initialCard = null;
+  badGuessCount = 0;
   console.log(board);
   render(); 
 }
@@ -80,10 +82,30 @@ function getShuffledTiles() {
 
 function handleCardClick(evt) {
   const tileIdx = parseInt(evt.target.id);
-  if (isNaN(tileIdx)) return; 
+  if (ignoreClick || isNaN(tileIdx) || clickedCard) return; 
   console.log(tileIdx)
   if (!initialCard) {
     initialCard = board[tileIdx];
+  } else if (initialCard === clickedCard) {
+    badGuessCount ++;
+    initialCard = null; 
+  } else if (initialCard) {
+    if (clickedCard.img === board.img);
+    console.log('You found a Match!')
+    tile.matched = true; 
+    initialCard = null;
+    winner = board.every(tile => tile.matched);
+  } else {
+    ignoreClick = true;
+    badGuessCount ++;
+    clickedCard.matched = true; // < - This is where I am a little lost for how to change or incorporate this logic. 
+    setTimeout(function()) {
+      ignoreClick = false;
+      initialCard = null;
+      clickedCard.matched = false; 
+
+    }
+  }
   }
 
   render();
@@ -91,7 +113,8 @@ function handleCardClick(evt) {
 
 function gameOver() {
   cancelInterval(timer);
-  $('button').show(); 
+  $('button').show();
+  badGuessCount = 0; 
 }
 
 function updateTimeLeft() {
