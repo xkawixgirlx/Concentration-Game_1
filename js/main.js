@@ -62,6 +62,7 @@ function init() {
   board = getShuffledTiles();
   score = 0;
   winner = null;
+  gameOver = false;
   initialCard = null;
   badGuessCount = 35;
   // console.log(board);
@@ -120,7 +121,8 @@ render();
 
 function checkgameOver() {
   if (badGuessCount === MAX_BAD_GUESSES) {
-  console.log('Game Over! You lose!')
+    gameOver = true;
+    console.log('Game Over! You lose!')
   }
 }
 
