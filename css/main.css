@@ -35,7 +35,7 @@ h1 {
 }
 
 h3 {
-    font-size: 3.5vmin;
+    font-size: 3vmin;
 }
 
 #win-lose {
@@ -43,7 +43,7 @@ h3 {
     text-shadow: 2px 3px 2px rgb(17 43 125 / 45%);
     font-family: fantasy;
     font-style: oblique;
-    font-size: 3vmin;
+    font-size: 2.8vmin;
     margin-left: 2vmin;
     margin-top: 7vmin;
 }
