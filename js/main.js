@@ -131,7 +131,7 @@ function render() {
   renderBoard(); 
   renderMessage();
   renderScore();
-  // playAgainBtn.style.visibility = winner || gameOver ? 'visible' : 'hidden';
+  playAgainBtn.style.visibility = winner || gameOver ? 'visible' : 'hidden';
 }
 
 function renderBoard() {

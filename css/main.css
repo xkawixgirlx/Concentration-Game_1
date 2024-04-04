@@ -22,7 +22,7 @@ h1,h3 {
     color: whitesmoke;
     font-family: fantasy;
     font-style: oblique;
-    text-shadow: 25px, 25px, 30px, white;
+    text-shadow: 2px 3px 2px rgb(17 43 125 / 65%);
     min-height: 4vh;
     margin-left: 7vmin;
 }
@@ -38,7 +38,7 @@ h3 {
 
 #win-lose {
     color: whitesmoke;
-    text-shadow: 5px, 5px, 5px, black;
+    text-shadow: 2px 3px 2px rgb(17 43 125 / 45%);
     font-family: fantasy;
     font-style: oblique;
     font-size: 1.25rem;
@@ -48,7 +48,7 @@ h3 {
 
 #bad-guess, #score {
     color: whitesmoke;
-    text-shadow: 5px, 5px, 5px, white;
+    text-shadow: 2px 3px 2px rgb(17 43 125 / 45%);
     margin-left: 7vmin;
     font-style: oblique;
 }
@@ -70,10 +70,11 @@ h3 {
     margin-left: 7vmin;
     gap: 1vmin;
     
-
+    
     img {
         width: 15vmin;
         border-radius: 25px;
+        box-shadow: 5px 8px 10px -2px rgb(91 158 237 / 45%);
     }
     
 }
@@ -95,14 +96,18 @@ h3 {
 button {
     background-color: rgb(53, 64, 136);
     color: white;
-    text-shadow: 3px, 3px, 3px, black;
-    border-radius: 15px;
+    text-align: center;
+    text-shadow: 2px 3px 2px rgb(17 43 125 / 45%);
+    box-shadow: 5px 8px 10px -2px rgb(91 158 237 / 45%);
+    border-radius: 75px;
     font-size: 2vmin;
     font-family: fantasy;
+    line-height: 45px;
     width: 275px;
     position: relative;
     padding: 1.75vmin;
     margin-top: 6vmin;
+    cursor: pointer;
 }
 
 
