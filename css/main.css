@@ -3,7 +3,7 @@
 }
 
 body {
-    margin-left:  160px;
+    margin-left:  23vmin;
     font-family: fantasy;
     height: 100vh;
     padding: 0, 10px;
@@ -23,17 +23,19 @@ h1,h3 {
     font-family: fantasy;
     font-style: oblique;
     text-shadow: 2px 3px 2px rgb(17 43 125 / 65%);
-    min-height: 4vh;
-    margin-left: 7vmin;
+    margin-left: 2vmin;
+    padding-left: 2vmin;
 }
 
 h1 {
-    font-size: 3em;
-    margin-top: 1em;
+    font-size: 5vmin;
+    margin-top: 2vmax;
+    margin-bottom: 2vmax;
+
 }
 
 h3 {
-    font-size: 1.5em;
+    font-size: 3.5vmin;
 }
 
 #win-lose {
@@ -41,27 +43,29 @@ h3 {
     text-shadow: 2px 3px 2px rgb(17 43 125 / 45%);
     font-family: fantasy;
     font-style: oblique;
-    font-size: 1.25rem;
-    margin-left: 7vmin;
+    font-size: 3vmin;
+    margin-left: 2vmin;
     margin-top: 7vmin;
 }
 
 #bad-guess, #score {
     color: whitesmoke;
     text-shadow: 2px 3px 2px rgb(17 43 125 / 45%);
-    margin-left: 7vmin;
+    margin-left: 4vmin;
+    margin-bottom: 1vmin;
     font-style: oblique;
 }
 
 #score {
-    margin: 5vmin;
-    padding-left: 15px;
+    margin: 3vmin;
+    padding-left: 1vmin;
     font-family: fantasy;
-    font-size: 1.65em;
+    font-size: 5vmin;
+    padding-top: 1vmax;
 }
 
 #bad-guess {
-    font-size: 1.5em;
+    font-size: 3vmin;
 }
 
 #cards {
@@ -81,16 +85,16 @@ h3 {
 
 #sidebar-nav {
     height: 100vh;
-    width: 30vmin;
-    max-width: 350px;
+    width: 7vmax;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    padding-top: 25vmin;
+    padding-top: 4vmax;
     overflow-x: hidden;
     background-color: rgb(53, 64, 136);
-    padding-right: 6vmin;
+    padding-right: 2vmax;
+    min-width: 25vmin;
 }
 
 button {
@@ -100,16 +104,57 @@ button {
     text-shadow: 2px 3px 2px rgb(17 43 125 / 45%);
     box-shadow: 5px 8px 10px -2px rgb(91 158 237 / 45%);
     border-radius: 75px;
-    font-size: 2vmin;
+    font-size: 3vmin;
     font-family: fantasy;
     line-height: 45px;
-    width: 275px;
+    width: 17vmax;
     position: relative;
     padding: 1.75vmin;
     margin-top: 6vmin;
+    margin-left: 3vmax;
     cursor: pointer;
 }
 
+/*@media (max-width: 500px) {
+    body {
+        margin-left: 23vmin;
+    }
+    h1 {
+        font-size: 5vmin;
+        margin-top: 2vmax;
+        
+    }
+    h3 {
+        font-size: 1.5vmax;
+    }
+    h1,h3 {
+        margin-left: 2vmin;
+        padding-left: 2vmin;
+    }
+    #win-lose {
+        font-size: 3vmin;
+        margin-left: 2vmin;
+        margin-top: 7vmin;
+    }
+    #score {
+        font-size: 5vmin;
+        margin: 3vmin;
+        padding-left: 1vmin;
+    }
+    #bad-guess {
+        font-size: 3vmin;
+        margin-left: 4vmin;
+        margin-bottom: 1vmin;
+        padding-top: 1vmax;
+    }
+    button {
+        font-size: 3vmin;
+        width: 17vmax;
+        padding: 1.75vmin;
+        margin-top: 6vmin;
+        margin-left: 3vmax;
+    }
+}*/
 
 
 
