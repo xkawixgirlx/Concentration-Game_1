@@ -92,6 +92,7 @@ h3 {
     left: 0;
     padding-top: 4vmax;
     overflow-x: hidden;
+    background: url('https://i.imgur.com/nnJEycp.png');
     background-color: rgb(53, 64, 136);
     padding-right: 2vmax;
     min-width: 25vmin;
