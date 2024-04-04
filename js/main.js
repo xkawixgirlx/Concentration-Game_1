@@ -11,23 +11,11 @@ const SOURCE_TILES = [
 ];
 
 const TILE_BACK = 'https://i.imgur.com/WoEmI2M.jpg';
-const DISPLAY_TILES_TIME = 1500; //in milliseconds = 1 sec.
+const DISPLAY_TILES_TIME = 1500; 
 const MAX_BAD_GUESSES = 30;
 
 
-
 /*----- state variables -----*/
-/*States:
-Flipped/not flipped matched: 
-1st card? initialCard
-Board render
-Audio Icebox feature
-Play Again/Play Button 
-Timer Countdown
-Modes/Levels Icebox feature */ 
-/*let timer; Icebox feature
-let timeLeft = 120; //seconds */
-/*let mode;*/ //IceBox feature
 let board;
 let winner;
 let gameOver;
@@ -37,7 +25,6 @@ let badGuessCount;
 let ignoreClick;
 
 
-
 /*----- cached elements  -----*/
 const playAgainBtn = document.querySelector('button');
 const tileImgEls = document.querySelector('section > img');
@@ -45,16 +32,10 @@ const msgEl = document.getElementById('win-lose');
 const badGuessesEl = document.getElementById('badguessCount');
 const scoreEl = document.getElementById('scoreMatch');
 
-//!
-//*
-//?
 
-//! setInterval();
 /*----- event listeners -----*/
-// *.addEventListener(evt);
 playAgainBtn.addEventListener('click', init);
 document.getElementById('cards').addEventListener('click', handleCardClick);
-
 
 
 /*----- functions -----*/
@@ -156,21 +137,3 @@ function renderScore() {
   scoreEl.textContent = score;
   badGuessesEl.textContent = badGuessCount;
 }
-
-
-/*Pseudocode:
-define win condition/Lose Condition - if else? maybe while if Zen Mode
-define array of cards x2
-Event listeners for Audio and play again/ first card flip buttons
-Render cards();
-RenderBoard();
-Hard Mode - adjusts the timer time 
-Zen Mode - no time limit Hard Code end or pause button. 
-Logic to know if cards are matching. 
-Does cards from Array1 === Array2 if true increment score? 
-All cards match === win
-Timer hits Zero === Loss
-Zen Mode: how many points can you get. winner = null;
- */
-
-
