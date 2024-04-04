@@ -4,7 +4,8 @@ This is a game of matching cards, using a space/galaxy/zodiac theme. The goal is
 
 # Screenshots
 Included are images of the game, this first one is on a live Mobile Device, the other 3 are a fullscreen version on a desktop. The code as been made in a way that the game can be played on various devices not just desktop. 
-<img src="Screenshots/1712267572311.jpeg">
+<img src="Screenshots/Screenshot_20240404_152042_Brave.jpg">
+<img src="Screenshots/Screenshot_20240404_152206_Brave.jpg">
 <img src="Screenshots/Screenshot 2024-04-04 at 2.40.48 PM.png">
 <img src="Screenshots/Screenshot 2024-04-04 at 2.41.45 PM.png">
 <img src="Screenshots/Screenshot 2024-04-04 at 2.42.33 PM.png">
